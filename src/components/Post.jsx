@@ -7,11 +7,9 @@ import { useState } from 'react';
 
 export function Post({author, publishedAt, content}) {
 
-    const [comments,set] = useState (
+    const [comments,setComments] = useState (
         [
-            1,
-            2,
-            3,
+            'Post muito bacana, hein?!'
         ]
     )
 
@@ -27,8 +25,8 @@ export function Post({author, publishedAt, content}) {
    
     function handleCreateNewComment() {
         event.preventDefault();
-        setComments(1,2,3);
-       console.log(comments);
+        setComments([...comments, comments.length + 1]);
+    //    console.log(comments);
     }
     return (
         <article className={styles.post}>
@@ -67,7 +65,7 @@ export function Post({author, publishedAt, content}) {
 
             <div className={styles.commentList}>
                 {comments.map(comment => {
-                    return <Comment/>
+                    return <Comment content={comment}/>
                 })}
             </div>
 
